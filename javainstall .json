@@ -1,0 +1,34 @@
+https://developers.id.me/organizations/7918/applications/15314/oauth
+
+
+key 1
+1f5bab1b84cdb04a40b9d4344577161a
+key 2 
+41c818ed87067c8384be6056ba09450d
+
+
+authendpoints
+https://api.id.me/oauth/authorize?client_id=1f5bab1b84cdb04a40b9d4344577161a&redirect_uri=https://www.verizon.com/digital/nsa/secure/ui/bill/overview/&response_type=code&scope=alumni
+
+
+auth code 
+https://www.verizon.com/digital/nsa/secure/ui/bill/overview/?code=a1b2c3d4e5f6g7h8i9j0
+
+
+curl -X POST -d "code=a1b2c3d4e5f6g7h8i9j0&client_id=1f5bab1b84cdb04a40b9d4344577161a&client_secret=41c818ed87067c8384be6056ba09450d&redirect_uri=https://www.verizon.com/digital/nsa/secure/ui/bill/overview/&grant_type=authorization_code" https://api.id.me/oauth/token
+
+{
+    "access_token" : "a0b1c2d3f4g5h6i7j8k9l0m1n2o3p4q5",
+    "token_type" : "bearer",
+    "expires_in" : "300",
+    "refresh_token" : "e7c77fe1fd5ece9aaccb129f6dd39431",
+    "refresh_expires_in" : "604800"
+}
+
+
+site name ; spyd3r 
+
+https://developers.id.me
+
+"https://s3.amazonaws.com/idme/developer/idme-buttons/assets/js/idme-wallet-button.js"></script>
+

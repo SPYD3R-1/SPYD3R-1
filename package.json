@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@ledgerhq/wallet-api-simulator": "^1.2.0",
+    "web3": "^4.16.0"
+  }
+}

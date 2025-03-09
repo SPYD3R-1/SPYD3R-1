@@ -1,0 +1,16 @@
+<!DOCTYPE html> 
+<html lang=“en”>
+<head>
+	<title>Alert Examples</title>
+	<meta charset=“utf-8”>
+</head>
+<body>
+	
+	<h3>Alert Examples in vs code </h3>
+		<strong>Success!</strong> This alert box represents a successful or positive action.
+		<strong>Info!</strong> This alert box represents a neutral informative change or action. 
+		<strong>Warning!</strong> This alert box represents a waring that might need attention.
+		<strong>Danger!</strong>This alert box represents a dangerous or potentially negative action.
+	</body> 
+	</html> 
+    

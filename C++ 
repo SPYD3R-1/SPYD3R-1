@@ -1,0 +1,155 @@
+ file:///Users/ariseai.py/Desktop/plain%20text%20data%20.html
+
+https://0t3e4.csb.app
+
+<!doctype html>
+
+<body class="main">
+  <span id="idme-wallet-button" data-scope="military" data-client-id="[YOUR_CLIENT_ID]" data-redirect="http://localhost:5000/callback" data-response="code"></span>
+  <script src="https://s3.amazonaws.com/idme/developer/idme-buttons/assets/js/idme-wallet-button.js"></script>
+</body>
+
+.git ignore 
+venv/
+
+## UNRELEASED
+
+- Update attributes endpoint to V3
+- Add changelog
+
+The MIT License (MIT)
+
+Copyright (c) 2017 ID.me
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+# server.py
+client_id              = 'YOUR_CLIENT_ID'
+client_secret          = 'YOUR_CLIENT_SECRET'
+redirect_uri           = 'YOUR_REDIRECT_URI'
+authorization_base_url = 'https://api.id.me/oauth/authorize'
+token_url              = 'https://api.id.me/oauth/token'
+attributes_url         = 'https://api.id.me/api/public/v3/attributes.json'
+
+# possible scope values: "military", "student", "responder", "government", "teacher"
+scope = ['YOUR_SCOPE_VALUE']
+
+pip install -r requirements.txt
+python server.py
+
+flask
+requests-oauthlib
+
+import os
+from flask import Flask, jsonify, render_template, request, redirect, session, url_for
+from requests_oauthlib import OAuth2Session
+
+app = Flask(__name__)
+
+# Get this information by registering your app at https://developer.id.me
+client_id              = 'YOUR_CLIENT_ID'
+client_secret          = 'YOUR_CLIENT_SECRET'
+redirect_uri           = 'YOUR_REDIRECT_URI'
+authorization_base_url = 'https://api.id.me/oauth/authorize'
+token_url              = 'https://api.id.me/oauth/token'
+attributes_url         = 'https://api.id.me/api/public/v3/attributes.json'
+
+@app.route("/")
+
+def demo():
+    return render_template('index.html')
+
+@app.route("/callback", methods=["GET"])
+def callback():
+    # Exchange your code for an access token
+    idme  = OAuth2Session(client_id, redirect_uri=redirect_uri)
+    token = idme.fetch_token(token_url, client_secret=client_secret, authorization_response=request.url)
+
+    # At this point you can fetch a user's attributes but lets save
+    # the token and show how this is done from a persisted token
+    # in /profile.
+    session['oauth_token'] = token
+
+    return redirect(url_for('.profile'))
+
+@app.route("/profile", methods=["GET"])
+def profile():
+    # Fetching the user's attributes using an OAuth 2 token.
+    idme = OAuth2Session(client_id, token=session['oauth_token'])
+    payload = idme.get(attributes_url).json()
+
+    session['profile'] = 'true'
+    return jsonify(payload)
+
+if __name__ == "__main__":
+    # This allows us to use a plain HTTP callback
+    os.environ['DEBUG'] = "1"
+    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
+    app.secret_key = os.urandom(24)
+    app.run(debug=True)Troubleshooting PATH Issues: A Professional Guide with Interactive PDFs
+Ensuring executables are accessible via the command line requires proper configuration of the PATH environment variable. Here’s a structured approach with interactive PDFs to diagnose and resolve common PATH issues.
+
+Common Issues and Resolutions
+Incorrect Path Entry:
+Verify Path Accuracy:
+Double-check the path to ensure it points to the correct executable location.
+Interactive PDF: Verify Path Accuracy
+Unapplied Changes:
+Restart the Terminal/Command Prompt:
+Close and reopen your terminal or command prompt after changes.
+Interactive PDF: Restart Terminal
+Incorrect Shell Configuration:
+Editing the Correct Profile:
+Ensure modifications are made in the correct shell profile file.
+Interactive PDF: Edit Shell Profile
+Global vs. Local Scope:
+User vs. System Variables:
+On Windows, ensure the PATH is set under System Variables for global access.
+Interactive PDF: Set System Variables
+Conflicting PATH Entries:
+Eliminate Duplicates:
+Remove redundant or conflicting entries.
+Interactive PDF: Remove Duplicate Entries
+Permission Restrictions:
+Administrative Rights:
+Ensure you have necessary permissions to modify system-wide variables.
+Interactive PDF: Check Permissions
+Typographical Errors:
+Spelling and Case Sensitivity:
+Pay attention to case sensitivity and spelling.
+Interactive PDF: Check for Typos
+PATH Verification:
+Echo PATH:
+Use echo $PATH (Linux/Mac) or echo %PATH% (Windows) to check the PATH.
+Interactive PDF: Echo PATH
+
+Systematic Troubleshooting Steps
+Executable Verification: Confirm the executable exists in the specified directory.
+Interactive PDF: Verify Executable
+Validate Current PATH: Use echo commands to review the current PATH variable.
+Interactive PDF: Validate PATH
+Modify Profile or Environment Variables: Update files/settings to include the correct path.
+Interactive PDF: Modify Settings
+Apply Configuration Changes: Re-source profile files or restart the command prompt.
+Interactive PDF: Apply Changes
+Command Execution Test: Try running the command to ensure PATH recognition.
+Interactive PDF: Test Command Execution
+
+By following this professional approach, supported by interactive PDFs, you can effectively resolve PATH issues, ensuring seamless command-line access to executables like Google Chrome. This structured method provides a uniquereliable framework for maintaining system efficiency and accessibility.
